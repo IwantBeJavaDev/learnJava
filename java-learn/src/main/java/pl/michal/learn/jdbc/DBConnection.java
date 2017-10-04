@@ -27,7 +27,8 @@ public class DBConnection {
 		Properties prop = new Properties();
 		InputStream inputStream = null;
 		try {
-			inputStream = getClass().getClassLoader().getResourceAsStream(name);
+			ClassLoader loader = Thread.currentThread().getContextClassLoader();
+			inputStream = loader.getResourceAsStream(name);
 			prop.load(inputStream);
 		} catch (Exception e) {
 			System.out.println("Exception: " + e);
